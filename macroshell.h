@@ -10,6 +10,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <signal.h>
+#include <sys/wait.h>
 
 extern char **environ;
 
@@ -41,6 +42,7 @@ typedef struct s_data
 	t_token *token;
 	int		has_pipe;
 	int		num_pipes;
+	int		sigint;
 }	t_data;
 
 //	libft
@@ -71,5 +73,6 @@ void 	ft_chdir(t_data *data);
 void 	ft_pwd();
 void 	ft_echo(t_data *data);
 void 	ft_export();
+void 	ft_env();
 
 #endif

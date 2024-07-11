@@ -57,3 +57,12 @@ void ft_echo(t_data *data)
     ft_putstr_fd("\n", 1);
 }
 
+void ft_env()
+{
+	int i = 0;
+	while (environ[i] != NULL)
+	{
+		printf("%s\n", environ[i]);
+		i++;
+	}
+}

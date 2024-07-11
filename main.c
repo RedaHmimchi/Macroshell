@@ -9,21 +9,29 @@ int main()
 
 	data = malloc(sizeof(t_data));
 	parse_bin(input, data);
-	rl_catch_signals = 0;
-    initialize_signals();
+    initialize_signals(data);
 	while (69)
 	{
+		input = NULL;
 		input = readline("macroshell$ ");
 		if (input == NULL)
         {
-			printf("bye bye\n");
+			printf("exit\n");
             exit(0);
         }
-		if (*input)
+		
+		if (input)
+		{
+			if (*input == '\0') // Check if input is an empty string
+    		{
+    	   		free(input); // Free the allocated memory to avoid memory leaks
+    	    	continue; // Skip the rest of the loop and start over
+    		}
 			add_history(input);
-		parse_command(input, data);
+			parse_command(input, data);
+        	execute_commands(data);
+		}
         // EXECUTE THE COMMANDS
-        execute_commands(data);
 		// // PRINT THE TOKENS
 		// t_token *token = data->token;
 		// while (token != NULL)

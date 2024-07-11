@@ -59,7 +59,13 @@ void execute_command_in_bin(t_data *data)
 
 void execute_command(t_data *data)
 {
-	if (ft_strcmp(data->args[0], "pwd") == 0)
+	t_token *token = data->token;
+ 
+	if (data->args[0] == NULL || data->args[0][0] == '\0')
+		return;
+	else if (ft_strcmp("exit", token->value) == 0)
+		exit(0);
+	else if (ft_strcmp(data->args[0], "pwd") == 0)
 		ft_pwd();
 	else if (ft_strcmp(data->args[0], "cd") == 0)
 	    ft_chdir(data);
@@ -67,6 +73,8 @@ void execute_command(t_data *data)
 		ft_echo(data);
 	else if (ft_strcmp(data->args[0], "export") == 0)
 		ft_export();
+	else if (ft_strcmp(data->args[0], "env") == 0)
+		ft_env();
 	else
 	 	execute_command_in_bin(data);
 }
@@ -80,8 +88,6 @@ void execute_commands(t_data *data)
 	int i = 0;
 
     //args = parse_commands(data);
-	if (ft_strcmp("exit", token->value) == 0)
-		exit(0);
 	if (data->has_pipe == 0)
 	{
 		parse_args(data);
