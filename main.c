@@ -9,9 +9,9 @@ int main()
 
 	data = malloc(sizeof(t_data));
 	parse_bin(input, data);
-    initialize_signals(data);
 	while (69)
 	{
+    	initialize_signals();
 		input = NULL;
 		input = readline("macroshell$ ");
 		if (input == NULL)
