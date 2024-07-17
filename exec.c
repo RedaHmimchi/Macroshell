@@ -93,70 +93,9 @@ void execute_commands(t_data *data)
 		parse_args(data);
 		execute_command(data);
 	}
-	/*
-			pipe()
-			fork
-
-			inside child process
-			  if before there is a pipe
-			    change the input according to the old one
-			  if after there is a pipe
-			    change the output according to the new one
-			  execute the command
-
-
-			inside parent process
-			  wait for the child process to finish
-			  close pipes			
-	*/
 
 	if (data->has_pipe == 1)
 	{
 		//
 	}
-	
-	// while (token != NULL) 
-	// {
-	//     if (token->type == WORD) 
-	//     {
-	//         args[arg_index++] = token->value;
-	//         args[arg_index] = NULL;
-	//     }
-	//     if (ft_strcmp(args[0], "exit") == 0)
-	//         exit(0);
-	//     if (token->type == PIPE) 
-	//     {
-	//         if (token->type == PIPE) 
-	//         {
-	//             pipe(pipefd);
-	//             if ((pid = fork()) == -1) 
-	//             {
-	//                 perror("fork");
-	//                 exit(EXIT_FAILURE);
-	//             } 
-	//             else if (pid == 0) 
-	//             {
-	//                 dup2(fd_in, 0); // change the input according to the old one 
-	//                 if (token->next != NULL)
-	//                     dup2(pipefd[1], 1);
-	//                 close(pipefd[0]);
-	//                 data->cmd = args[0];
-	//                 data->args = args;
-	//                 execute_command(data);
-	//                 exit(EXIT_FAILURE);
-	//             } 
-	//             else
-	//                 wait(NULL); // wait for process to finish
-	//         }
-	//         else
-	//         {
-	//             data->cmd = args[0];
-	//             data->args = args;
-	//             execute_command(data);
-	//             break;
-	//         }
-	//         arg_index = 0; // reset for next command
-	//     }
-	//     token = token->next;
-	// }
 }
